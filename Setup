@@ -1,0 +1,5 @@
+useradd -m jump -s /bin/bash
+passwd jump   
+
+что то еще было с папкой servers, но я не все понял 
+https://www.youtube.com/watch?v=KIeBC7NIzj4&t=1s&ab_channel=ExitZero
