@@ -14,3 +14,5 @@ SER=$(dialog --menu "Select server:" 0 0 0 \
 case $SER in
         1) ssh serhio@192.168.146.128 ; exit ;;
         2) ssh fedora@192.168.146.129 ; exit ;;
+
+esac
