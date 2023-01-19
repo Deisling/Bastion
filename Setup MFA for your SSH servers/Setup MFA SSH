@@ -1,0 +1,33 @@
+sudo -i
+apt update
+apt upgrade 
+apt install libpam-google-authenticator
+
+
+
+nano /etc/pam.d/sshd
+вставляем вверх. Это порядок аутентификации в линукс. Т.е. он сначала потребует код от MFA и этого будет достаточно, чтобы войти 
+# PAM configuration for the Secure Shell service
+
+# Google authenticator
+auth sufficient pam_google_authenticator.so nullok
+
+
+
+nano /etc/ssh/sshd_config
+поменять значения и разкоментить 
+PasswordAuthentication yes
+
+# Change to yes to enable challenge-response passwords (beware issues with
+# some PAM modules and threads)
+ChallengeResponseAuthentication yes
+
+добавить в конце методы аутентификации 
+AuthenticationMethods publickey,keyboard-interactive password,keyboard-interactive
+
+systemctl restart ssh
+
+
+дальше создаем пользователя 
+google-authenticator
+затем сканируем код 
