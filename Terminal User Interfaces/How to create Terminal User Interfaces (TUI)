@@ -55,7 +55,7 @@ case $SER in
 
 
 открыть папку 
-chown -R jump:jump /home/jump/.scripts/
+chown -R jump:jump /home/jump/scripts/
 перезагрузить службу 
 systemctl restart ssh
 
@@ -198,7 +198,7 @@ Match User jump
         X11Forwarding no
         PermitTunnel no
         GatewayPorts no
-        ForceCommand /home/jump/.scripts/menubox
+        ForceCommand /home/jump/scripts/menubox
 
 
 
