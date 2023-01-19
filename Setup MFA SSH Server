@@ -25,5 +25,9 @@ ChallengeResponseAuthentication yes
 добавить в конце методы аутентификации 
 AuthenticationMethods publickey,keyboard-interactive password,keyboard-interactive
 
-
 systemctl restart ssh
+
+
+дальше создаем пользователя 
+google-authenticator
+затем сканируем код 
