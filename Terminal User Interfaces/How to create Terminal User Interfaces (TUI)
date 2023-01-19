@@ -35,20 +35,19 @@ VAR=$(dialog --insecure --passwordbox "Please enter your password:" 0 0 3>&1 1>&
 сам скрипт 
 #!/bin/bash
 
-PASS=$(dialog --title "Multi-Factor Authentication" \
-        --clear \
-        --insecure \
-        --passwordbox "Please enter your MFA code:" 0 0 3>&1 1>&2 2>&3 3>&-); clear
-USER_SECRET=$(sed -n -1p $HOME/.google_authenticator)
-TOTP=$(oathtool --topt -b $USER_SECRET)
+PASS=$(dialog --title "Multi-Factor Authentication" --clear --insecure --passwordbox "Please enter your MFA code:" 0 0 3>&1 1>&2 2>
+USER_SECRET=$(sed -n 1p $HOME/.google_authenticator)
+TOTP=$(oathtool --totp -b $USER_SECRET)
 [[ "$PASS" -ne "$TOTP" ]] && { dialog --title "Error" --msgbox "Incorrect code!" 5 25; clear; exit 1; }
 SER=$(dialog --menu "Select server:" 0 0 0 \
-        1 "Ununtu Deisling"     \
-        2 "Fedora Deisling"     \
+        1 "Ununtu Deisling"       \
+        2 "Fedora Deisling"       \
         3>&1 1>&2 2>&3 3>&-); clear
 case $SER in
         1) ssh serhio@192.168.146.128 ; exit ;;
         2) ssh fedora@192.168.146.129 ; exit ;;
+esac
+
 
 
 
